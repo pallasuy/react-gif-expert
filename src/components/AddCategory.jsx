@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { PropTypes } from 'prop-types';
 
 export const AddCategory = ({ onNewCategorie }) => {
 
@@ -10,6 +11,7 @@ export const AddCategory = ({ onNewCategorie }) => {
 
 
   const onSubmit = (event) => {
+
     event.preventDefault();
     const inputValueT = inputValue.trim();
     if (inputValueT.length < 1) return;//Si la cadena esta vacia no continuo
@@ -20,7 +22,7 @@ export const AddCategory = ({ onNewCategorie }) => {
   }
 
   return (
-    <form onSubmit={event => onSubmit(event)}>
+    <form onSubmit={event => onSubmit(event)} aria-label='form'>
       <input
         type="text"
         placeholder="Buscar Gifs"
@@ -42,4 +44,7 @@ export const AddCategory = ({ onNewCategorie }) => {
   );
 }
 
+AddCategory.propTypes = {
+  onNewCategorie: PropTypes.func.isRequired,
+}
 
